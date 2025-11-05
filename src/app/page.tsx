@@ -13,7 +13,7 @@ export default function Home() {
   const { user, loading } = useContext(UserContext);
 
   useEffect(() => {
-    fetch(process.env.NEXT_PUBLIC_API_URL + "posts")
+    fetch(process.env.NEXT_PUBLIC_API_URL + "/posts")
       .then((res) => res.json())
       .then((data) => {
         setPosts(data);
@@ -32,12 +32,14 @@ export default function Home() {
     <div className=" flex justify-between">
       <Sidebar />
       <div className="w-[600px] flex flex-col gap-4 mx-auto">
-        {posts.slice().reverse().map((post) => (
-          <PostCard key={post._id} post={post} />
-        ))}
+        {posts
+          .slice()
+          .reverse()
+          .map((post) => (
+            <PostCard key={post._id} post={post} />
+          ))}
       </div>
       <Recommend />
-      
     </div>
   );
 }
