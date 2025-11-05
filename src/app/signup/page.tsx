@@ -1,10 +1,10 @@
 "use client";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Eye, EyeClosed } from "lucide-react";
+import Link from "next/link";
 
 const SignUpPage = () => {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -32,13 +32,13 @@ const SignUpPage = () => {
     <div className="w-full h-screen flex justify-center items-center bg-black">
       <div className="flex w-full max-w-5xl">
         {/* Зураг */}
-      <div className="hidden lg:flex w-1/2 justify-center items-center">
-        <img
-          src="https://imgur.com/wuTEM3b.png"
-          alt="login preview"
-          className="rounded-2xl object-cover w-[500px] h-[500px]"
-        />
-      </div>
+        <div className="hidden lg:flex w-1/2 justify-center items-center">
+          <img
+            src="https://imgur.com/wuTEM3b.png"
+            alt="login preview"
+            className="rounded-2xl object-cover w-[500px] h-[500px]"
+          />
+        </div>
 
         {/* Signup form */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center items-center text-white">
@@ -105,7 +105,8 @@ const SignUpPage = () => {
             </div>
 
             <p className="text-[10px] text-gray-500 mt-4">
-              By signing up, you agree to our Terms, Privacy Policy and Cookies Policy.
+              By signing up, you agree to our Terms, Privacy Policy and Cookies
+              Policy.
             </p>
 
             <Button
@@ -117,10 +118,10 @@ const SignUpPage = () => {
           </div>
 
           <div className="border border-gray-700 mt-3 p-4 w-[350px] text-sm text-center text-gray-300">
-             <p className="text-white gap-2">Have an account?</p>
-            <a href="/signin" className="text-[#4b6cb7] font-semibold">
-                Log in
-              </a>
+            <p className="text-white gap-2">Have an account?</p>
+            <Link href="/signin" className="text-[#4b6cb7] font-semibold">
+              Log in
+            </Link>
           </div>
         </div>
       </div>

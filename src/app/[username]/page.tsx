@@ -8,6 +8,8 @@ import { PostComment, PostLike, User } from "../types";
 import { PostType } from "../components/PostType";
 import { useUser } from "../providers/UserProvider";
 import { Sidebar } from "../components/Sidebar";
+import { AxiosError } from "axios";
+import { Follower } from "../types";
 
 interface Post {
   _id: string;
@@ -52,16 +54,17 @@ const Page = () => {
 
         // 3. тухайн хэрэглэгчийн постыг шүүх
         const userPosts = allPosts.filter(
-          (post: any) => post.createdBy?._id === userData._id
+          (post: Post) => post.createdBy?._id === userData._id
         );
         setPosts(userPosts);
 
         // 4. Follow төлөв шалгах
         const isFollowed = userData.followers?.some(
-          (f: any) => f.createdBy?._id === currentUser?._id
+          (f: Follower) => f.createdBy?._id === currentUser?._id
         );
         setIsFollowing(isFollowed);
-      } catch (err: any) {
+      } catch (error) {
+        const err = error as AxiosError;
         if (err.response?.status === 404) setIsNotFound(true);
       } finally {
         setLoading(false);

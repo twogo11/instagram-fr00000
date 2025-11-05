@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -8,6 +8,7 @@ import { useContext, useState } from "react";
 import { toast } from "sonner";
 import { UserContext } from "../providers/UserProvider";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 const SignInPage = () => {
   const { user, setToken } = useContext(UserContext);
@@ -115,10 +116,10 @@ const SignInPage = () => {
             </div>
 
             <div className="border-t border-gray-800 mt-6 pt-4 text-center text-sm">
-              <h3 className="text-white mb-2">Don't have an account?</h3>
-              <a href="/signup" className="text-[#4b6cb7] font-semibold">
-                Sign up
-              </a>
+              <h3 className="text-white mb-2">Dont have an account?</h3>
+              <Link href="/signup" className="text-[#4b6cb7] font-semibold">
+                Sig in
+              </Link>
             </div>
           </CardContent>
         </Card>

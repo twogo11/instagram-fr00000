@@ -6,8 +6,13 @@ export type User = {
 
   email: string | null;
   phone: string | null;
-  followers?: string[];
-  followings?: string[];
+  followers?: Follower[]; 
+  followings?: Follower[];
+};
+
+export type Follower = {
+  _id: string;
+  createdBy: User;
 };
 
 export type PostComment = {
